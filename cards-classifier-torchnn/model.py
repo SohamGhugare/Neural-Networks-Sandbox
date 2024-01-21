@@ -32,3 +32,6 @@ transform = transforms.Compose([
 
 # Loading the train dataset with transform
 dataset = CardDataset("/kaggle/input/cards-image-datasetclassification/train", transform)
+
+# Creating a dataloader with batch size of 32
+dataloader = DataLoader(dataset, batch_size=32, shuffle=True)
