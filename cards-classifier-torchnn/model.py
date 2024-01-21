@@ -16,3 +16,19 @@ from dataset import CardDataset
 
 # Loading the train dataset
 dataset = CardDataset(data_dir = "/kaggle/input/cards-image-datasetclassification/train")
+
+# Creating a dictionary associating target values with target names
+data_dir = "/kaggle/input/cards-image-datasetclassification/train"
+target_to_class = {v:k for k, v in ImageFolder(data_dir).class_to_idx.items()}
+# print(target_to_class)
+
+
+# Creating a transform for the input data
+# here it will simply resize to 128x128 and convert to tensor
+transform = transforms.Compose([
+    transforms.Resize((128, 128)),
+    transforms.ToTensor(),
+])
+
+# Loading the train dataset with transform
+dataset = CardDataset("/kaggle/input/cards-image-datasetclassification/train", transform)
